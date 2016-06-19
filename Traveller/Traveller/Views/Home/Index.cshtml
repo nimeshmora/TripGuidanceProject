@@ -1,4 +1,105 @@
-﻿@{
+﻿@model IEnumerable<Traveller.Models.site> 
+@{
     ViewBag.Title = "Home Page";
 }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+   </head>
+
+<body>
+    
+        
+        <form action="@Url.Action("Index", "Home")" method="get">
+            <!--<div class="dropdown">
+                <button class="btn btn-primary categorydrop dropdown-toggle" id="categorydrop" type="button" data-toggle="dropdown">
+                    Category
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">cultural</a></li>
+                    <li><a href="#">rock</a></li>
+                    <li><a href="#">other</a></li>
+                </ul>
+
+            </div>
+            -->
+            <select id="categorydrop">
+                <option value="1">cultural</option>
+                <option value="2">park</option>
+                <option value="2">historical</option>
+                <option value="2">botanical</option>
+                <option value="2">seaside</option>
+
+            </select>
+            <input type="text" id="category" name="name" />
+            <button type="submit">Show Sites</button>
+        </form>
+   
+   
+            <div id="googleMap" style="width:1000px;height:750px;"></div>
+
+
+
+    <script>
+        var myCenter = new google.maps.LatLng(8.00, 80.00);
+        var map;
+        
+        $(document).ready(function () {
+            $("#categorydrop").change(function () {
+                var cat = $('option:selected', this).text();
+                $("#category").val(cat);
+            });
+          //  alert($('#categorydrop :selected').text());
+
+        });
+
+
+        function addMarkers(lat,long,map,name) {
+
+            var infowindow = new google.maps.InfoWindow();
+
+            var marker = new google.maps.Marker({
+
+                position: new google.maps.LatLng(lat, long),
+                map: map
+            });
+
+
+            google.maps.event.addListener(marker, 'click', (function (marker) {
+                return function () {
+                    infowindow.setContent(name);
+
+                    infowindow.open(map, marker);
+                }
+            })(marker));
+        }
+
+        function initialize() {
+            var mapProp = {
+                center: myCenter,
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+
+             map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+             @foreach (var item in Model) {
+                 @:addMarkers('@item.s_lat','@item.s_long', map,'@item.s_name');
+             }
+
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+</body>
+
+</html>
 

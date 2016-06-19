@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TripGuiderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="guide">
+    <Key>
+      <PropertyRef Name="g_Id" />
+    </Key>
+    <Property Name="g_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="g_name" Type="varchar" MaxLength="500" />
+    <Property Name="g_contact" Type="varchar" MaxLength="500" />
+    <Property Name="g_availability" Type="varchar" MaxLength="500" />
+    <Property Name="g_city" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="hotel">
+    <Key>
+      <PropertyRef Name="h_id" />
+    </Key>
+    <Property Name="h_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="h_name" Type="varchar" MaxLength="500" />
+    <Property Name="h_address" Type="varchar" MaxLength="500" />
+    <Property Name="h_descrip" Type="varchar" MaxLength="500" />
+    <Property Name="h_url" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="site">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="s_name" Type="varchar" MaxLength="500" />
+    <Property Name="s_lat" Type="float" />
+    <Property Name="s_long" Type="float" />
+    <Property Name="s_category" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityContainer Name="TripGuiderModelStoreContainer">
+    <EntitySet Name="guide" EntityType="Self.guide" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hotel" EntityType="Self.hotel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="site" EntityType="Self.site" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

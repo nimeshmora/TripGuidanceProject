@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TripGuiderModelStoreContainer" CdmEntityContainer="TripGuiderEntities">
+    <EntitySetMapping Name="guides">
+      <EntityTypeMapping TypeName="TripGuiderModel.guide">
+        <MappingFragment StoreEntitySet="guide">
+          <ScalarProperty Name="g_Id" ColumnName="g_Id" />
+          <ScalarProperty Name="g_name" ColumnName="g_name" />
+          <ScalarProperty Name="g_contact" ColumnName="g_contact" />
+          <ScalarProperty Name="g_availability" ColumnName="g_availability" />
+          <ScalarProperty Name="g_city" ColumnName="g_city" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hotels">
+      <EntityTypeMapping TypeName="TripGuiderModel.hotel">
+        <MappingFragment StoreEntitySet="hotel">
+          <ScalarProperty Name="h_id" ColumnName="h_id" />
+          <ScalarProperty Name="h_name" ColumnName="h_name" />
+          <ScalarProperty Name="h_address" ColumnName="h_address" />
+          <ScalarProperty Name="h_descrip" ColumnName="h_descrip" />
+          <ScalarProperty Name="h_url" ColumnName="h_url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sites">
+      <EntityTypeMapping TypeName="TripGuiderModel.site">
+        <MappingFragment StoreEntitySet="site">
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+          <ScalarProperty Name="s_name" ColumnName="s_name" />
+          <ScalarProperty Name="s_lat" ColumnName="s_lat" />
+          <ScalarProperty Name="s_long" ColumnName="s_long" />
+          <ScalarProperty Name="s_category" ColumnName="s_category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

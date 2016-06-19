@@ -18,6 +18,15 @@ namespace Traveller
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+               name: "places",
+               url: "Home/Places",
+     defaults: new { controller = "Home", action = "Places", id = UrlParameter.Optional }
+
+           );
+
+            
         }
     }
 }

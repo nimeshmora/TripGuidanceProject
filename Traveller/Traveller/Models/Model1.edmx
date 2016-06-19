@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TripGuiderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="guide">
+          <Key>
+            <PropertyRef Name="g_Id" />
+          </Key>
+          <Property Name="g_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="g_name" Type="varchar" MaxLength="500" />
+          <Property Name="g_contact" Type="varchar" MaxLength="500" />
+          <Property Name="g_availability" Type="varchar" MaxLength="500" />
+          <Property Name="g_city" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="hotel">
+          <Key>
+            <PropertyRef Name="h_id" />
+          </Key>
+          <Property Name="h_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="h_name" Type="varchar" MaxLength="500" />
+          <Property Name="h_address" Type="varchar" MaxLength="500" />
+          <Property Name="h_descrip" Type="varchar" MaxLength="500" />
+          <Property Name="h_url" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="site">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="s_name" Type="varchar" MaxLength="500" />
+          <Property Name="s_lat" Type="float" />
+          <Property Name="s_long" Type="float" />
+          <Property Name="s_category" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityContainer Name="TripGuiderModelStoreContainer">
+          <EntitySet Name="guide" EntityType="Self.guide" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hotel" EntityType="Self.hotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="site" EntityType="Self.site" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TripGuiderModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="guide">
+          <Key>
+            <PropertyRef Name="g_Id" />
+          </Key>
+          <Property Name="g_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="g_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="g_contact" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="g_availability" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="g_city" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hotel">
+          <Key>
+            <PropertyRef Name="h_id" />
+          </Key>
+          <Property Name="h_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="h_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="h_address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="h_descrip" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="h_url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="site">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="s_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="s_lat" Type="Double" />
+          <Property Name="s_long" Type="Double" />
+          <Property Name="s_category" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="TripGuiderEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="guides" EntityType="Self.guide" />
+          <EntitySet Name="hotels" EntityType="Self.hotel" />
+          <EntitySet Name="sites" EntityType="Self.site" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TripGuiderModelStoreContainer" CdmEntityContainer="TripGuiderEntities">
+          <EntitySetMapping Name="guides">
+            <EntityTypeMapping TypeName="TripGuiderModel.guide">
+              <MappingFragment StoreEntitySet="guide">
+                <ScalarProperty Name="g_Id" ColumnName="g_Id" />
+                <ScalarProperty Name="g_name" ColumnName="g_name" />
+                <ScalarProperty Name="g_contact" ColumnName="g_contact" />
+                <ScalarProperty Name="g_availability" ColumnName="g_availability" />
+                <ScalarProperty Name="g_city" ColumnName="g_city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hotels">
+            <EntityTypeMapping TypeName="TripGuiderModel.hotel">
+              <MappingFragment StoreEntitySet="hotel">
+                <ScalarProperty Name="h_id" ColumnName="h_id" />
+                <ScalarProperty Name="h_name" ColumnName="h_name" />
+                <ScalarProperty Name="h_address" ColumnName="h_address" />
+                <ScalarProperty Name="h_descrip" ColumnName="h_descrip" />
+                <ScalarProperty Name="h_url" ColumnName="h_url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sites">
+            <EntityTypeMapping TypeName="TripGuiderModel.site">
+              <MappingFragment StoreEntitySet="site">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="s_lat" ColumnName="s_lat" />
+                <ScalarProperty Name="s_long" ColumnName="s_long" />
+                <ScalarProperty Name="s_category" ColumnName="s_category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
